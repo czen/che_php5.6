@@ -88,6 +88,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
 #    sudo chgrp -R 0 ${HOME}/che && \
 #    sudo chmod -R g+rwX ${HOME}/che
 
+
 ENV GAE_VERSION="1.9.70"
 RUN sudo apt-get update && \
     sudo apt-get install --no-install-recommends -y -q build-essential python2.7 python2.7-dev python-pip php-bcmath && \
