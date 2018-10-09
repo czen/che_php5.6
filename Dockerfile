@@ -111,10 +111,10 @@ LABEL che:server:80:ref=apache2 che:server:80:protocol=http
 
 EXPOSE 80 3306
 
-// sudo apt install wget
-// TODO: git clone http://gitlab.mmcs.sfedu.ru/it-lab/grade
+# sudo apt install wget
+# TODO: git clone http://gitlab.mmcs.sfedu.ru/it-lab/grade
 
-// DB TODO: sudo apt install wget
-// wget http://gitlab.mmcs.sfedu.ru:82/it-lab/grade/uploads/fe844fd29f9358e24666a84b48e51e76/dump_grade_full.sql
-// pg_restore -O -x -h localhost -U grade -d grade -1 dump_grade_full.sql
+# DB TODO: sudo apt install wget
+# wget http://gitlab.mmcs.sfedu.ru:82/it-lab/grade/uploads/fe844fd29f9358e24666a84b48e51e76/dump_grade_full.sql
+# pg_restore -O -x -h localhost -U grade -d grade -1 dump_grade_full.sql
 
