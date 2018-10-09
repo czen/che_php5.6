@@ -23,6 +23,7 @@ RUN sudo add-apt-repository ppa:ondrej/php && \
     php5.6-mcrypt \
     php5.6-curl \
     php5.6-mysql \
+    php5.6-pgsql \
     php5.6-gd \
     libapache2-mod-php5.6 \
     php5.6-cli \
@@ -77,6 +78,9 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
     sudo apt-get update && \
     sudo apt-get install -y nodejs
 
+# install NVM?
+# RUN curl-o-https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
 # install language server
 # RUN mkdir -p ${HOME}/che/ls-php/php-language-server && \
 #    cd ${HOME}/che/ls-php/php-language-server && \
@@ -87,7 +91,6 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
 #    rm -rf vendor && \
 #    sudo chgrp -R 0 ${HOME}/che && \
 #    sudo chmod -R g+rwX ${HOME}/che
-
 
 ENV GAE_VERSION="1.9.70"
 RUN sudo apt-get update && \
@@ -107,3 +110,11 @@ EXPOSE 8080 8000
 LABEL che:server:80:ref=apache2 che:server:80:protocol=http
 
 EXPOSE 80 3306
+
+// sudo apt install wget
+// TODO: git clone http://gitlab.mmcs.sfedu.ru/it-lab/grade
+
+// DB TODO: sudo apt install wget
+// wget http://gitlab.mmcs.sfedu.ru:82/it-lab/grade/uploads/fe844fd29f9358e24666a84b48e51e76/dump_grade_full.sql
+// pg_restore -O -x -h localhost -U grade -d grade -1 dump_grade_full.sql
+
