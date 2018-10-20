@@ -79,7 +79,9 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
     sudo apt-get install -y nodejs
 
 # install NVM?
-RUN curl-o-https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+sudo apt-get install -y nano
 
 # install language server
 # RUN mkdir -p ${HOME}/che/ls-php/php-language-server && \
@@ -117,4 +119,6 @@ EXPOSE 80 3306
 # DB TODO: sudo apt install wget
 # wget http://gitlab.mmcs.sfedu.ru:82/it-lab/grade/uploads/fe844fd29f9358e24666a84b48e51e76/dump_grade_full.sql
 # pg_restore -O -x -h localhost -U grade -d grade -1 dump_grade_full.sql
+
+
 
