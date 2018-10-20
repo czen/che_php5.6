@@ -88,6 +88,9 @@ sudo a2ensite grade.conf
 RUN sudo apt-get install -y nano
 
 # install language server
+# doesn't work with php5.6. Needs php7 to run
+# can provide language service for php5.6 though
+#
 # RUN mkdir -p ${HOME}/che/ls-php/php-language-server && \
 #    cd ${HOME}/che/ls-php/php-language-server && \
 #    composer require jetbrains/phpstorm-stubs:dev-master && \
