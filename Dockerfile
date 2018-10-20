@@ -78,11 +78,14 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
     sudo apt-get update && \
     sudo apt-get install -y nodejs
 
-# install NVM?
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
-    
-# nvm install 8 && nvm use 8 && \
-# npm install -g gulp
+# install NVM
+# https://stackoverflow.com/questions/25899912/install-nvm-in-docker
+ENV NVM_DIR /usr/local/nvm
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+ENV NODE_VERSION v8.12.0
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use --delete-prefix $NODE_VERSION"
+ENV NODE_PATH $NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
 
 # apache config for grade app
 COPY grade.conf /etc/apache2/sites-available/grade.conf
