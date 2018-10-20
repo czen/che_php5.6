@@ -83,7 +83,7 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh
 
 # apache config for grade app
 COPY grade.conf /etc/apache2/sites-available/grade.conf
-sudo a2ensite grade.conf
+RUN sudo a2ensite grade.conf
 
 RUN sudo apt-get install -y nano
 
