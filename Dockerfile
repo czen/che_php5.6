@@ -80,7 +80,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
 
 # install NVM
 # https://stackoverflow.com/questions/25899912/install-nvm-in-docker
-ENV NVM_DIR /usr/local/nvm
+ENV NVM_DIR ~/nvm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 ENV NODE_VERSION v8.12.0
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm use --delete-prefix $NODE_VERSION"
