@@ -137,6 +137,8 @@ RUN sudo mkdir $CHROMEDRIVER_DIR
 RUN sudo wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
 RUN sudo unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 
+RUN sudo pip install selenium
+
 # Put Chromedriver into the PATH
 ENV PATH $CHROMEDRIVER_DIR:$PATH
 
