@@ -112,8 +112,11 @@ RUN sudo apt-get install -y nano
 ENV GAE_VERSION="1.9.70"
 RUN sudo apt-get update && \
     sudo apt-get install --no-install-recommends -y -q build-essential python2.7 python2.7-dev python-pip php-bcmath && \
-    sudo pip install -U pip && \
-    sudo pip install virtualenv
+    sudo pip install -U pip
+
+RUN sudo pip install setuptools
+RUN sudo pip install virtualenv
+
 RUN cd /home/user/ && wget -q https://storage.googleapis.com/appengine-sdks/featured/google_appengine_${GAE_VERSION}.zip && \
     unzip -q google_appengine_${GAE_VERSION}.zip && \
     rm google_appengine_${GAE_VERSION}.zip && \
@@ -125,6 +128,17 @@ EXPOSE 8080 8000
 
 # label is used in Servers tab to display mapped port for Apache process on 80 port in the container
 LABEL che:server:80:ref=apache2 che:server:80:protocol=http
+
+ENV CHROMEDRIVER_VERSION 2.19
+ENV CHROMEDRIVER_DIR /chromedriver
+RUN sudo mkdir $CHROMEDRIVER_DIR
+
+# Download and install Chromedriver
+RUN sudo wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
+RUN sudo unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
+
+# Put Chromedriver into the PATH
+ENV PATH $CHROMEDRIVER_DIR:$PATH
 
 EXPOSE 80 3306
 
