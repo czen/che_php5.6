@@ -139,6 +139,8 @@ RUN sudo unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 
 RUN sudo pip install selenium
 
+RUN sudo sed -i 's/memory_limit = .*/memory_limit = '1024M'/' /etc/php/5.6/apache2/php.ini
+
 # Put Chromedriver into the PATH
 ENV PATH $CHROMEDRIVER_DIR:$PATH
 
